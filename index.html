@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calma Canina — peluquería canina con un enfoque tranquilo, higiénico y de confianza." />
+  <meta name="theme-color" content="#eef5f2" />
+  <title>Calma Canina | Peluquería Canina</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#f7fbf9;
+      --bg-soft:#eef5f2;
+      --panel:#ffffff;
+      --panel-2:#f1f7f4;
+
+      --text:#1f3b36;
+      --muted:#67807a;
+      --line:#d9e6e1;
+
+      --accent:#7eb4a4;
+      --accent-2:#5f9b89;
+      --accent-3:#d8ebe5;
+
+      --peach:#f2dfd3;
+      --shadow:0 18px 55px rgba(42,77,70,.08);
+
+      --container:1320px;
+      --radius-xl:34px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:14px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:90px;
+    }
+
+    body{
+      font-family:"Inter",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(126,180,164,.14), transparent 28%),
+        radial-gradient(circle at right 20%, rgba(242,223,211,.35), transparent 20%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea{
+      font:inherit;
+    }
+
+    button{
+      border:0;
+      background:none;
+      cursor:pointer;
+    }
+
+    :focus-visible{
+      outline:3px solid var(--accent-2);
+      outline-offset:4px;
+    }
+
+    ::selection{
+      background:var(--accent);
+      color:white;
+    }
+
+    .container{
+      width:min(calc(100% - 48px), var(--container));
+      margin:auto;
+    }
+
+    .section{
+      padding:110px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--accent-2);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:30px;
+      height:1px;
+      background:currentColor;
+    }
+
+    .title{
+      font-family:"Manrope",sans-serif;
+      font-size:clamp(42px,6vw,78px);
+      line-height:.95;
+      letter-spacing:-.05em;
+      font-weight:800;
+    }
+
+    .title span{
+      color:var(--accent-2);
+    }
+
+    .lead{
+      max-width:560px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.9;
+    }
+
+    .btn{
+      min-height:56px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      padding:0 22px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      transition:.28s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-primary{
+      background:var(--accent-2);
+      color:white;
+      box-shadow:0 12px 24px rgba(95,155,137,.25);
+    }
+
+    .btn-primary:hover{
+      background:#4e8675;
+    }
+
+    .btn-secondary{
+      background:white;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .btn-secondary:hover{
+      background:var(--bg-soft);
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .75s ease, transform .75s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* HEADER */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:999;
+      padding:16px 0;
+      transition:.28s ease;
+    }
+
+    header.scrolled{
+      background:rgba(247,251,249,.92);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(217,230,225,.9);
+      padding:10px 0;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .brand-icon{
+      width:42px;
+      height:42px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--accent-2), var(--accent));
+      color:white;
+      display:grid;
+      place-items:center;
+      font-size:22px;
+      box-shadow:0 10px 25px rgba(95,155,137,.25);
+    }
+
+    .brand-name{
+      font-family:"Manrope",sans-serif;
+      font-size:23px;
+      font-weight:800;
+      letter-spacing:-.04em;
+      line-height:1;
+    }
+
+    .brand-sub{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:28px;
+      align-items:center;
+    }
+
+    nav a{
+      font-size:13px;
+      color:#406059;
+      font-weight:700;
+    }
+
+    nav a:hover{
+      color:var(--accent-2);
+    }
+
+    .nav-cta{
+      padding:13px 18px;
+      border-radius:999px;
+      background:white;
+      border:1px solid var(--line);
+      font-size:12px;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .nav-cta:hover{
+      background:var(--accent-2);
+      color:white;
+      border-color:var(--accent-2);
+    }
+
+    .menu-btn{
+      display:none;
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:white;
+      font-size:22px;
+      color:var(--text);
+    }
+
+    /* HERO */
+    .hero{
+      padding:130px 0 40px;
+    }
+
+    .hero-wrap{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:34px;
+      align-items:stretch;
+      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.7));
+      border:1px solid rgba(217,230,225,.8);
+      border-radius:36px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-copy{
+      padding:clamp(34px,5vw,68px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:650px;
+    }
+
+    .hero-copy .lead{
+      margin-top:24px;
+      max-width:510px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .hero-notes{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:30px;
+    }
+
+    .hero-notes span{
+      background:var(--panel-2);
+      border:1px solid #dbe8e3;
+      color:#4f6862;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .hero-visual{
+      position:relative;
+      min-height:650px;
+      background:linear-gradient(180deg, #e9f3ef, #f8fcfa);
+      padding:28px;
+      display:grid;
+      place-items:center;
+    }
+
+    .hero-main{
+      position:relative;
+      width:100%;
+      height:100%;
+      min-height:590px;
+      border-radius:32px;
+      overflow:hidden;
+      background:#dfece7;
+    }
+
+    .hero-main img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-card{
+      position:absolute;
+      left:30px;
+      bottom:30px;
+      max-width:290px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(217,230,225,.95);
+      backdrop-filter:blur(10px);
+      padding:18px;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card small{
+      display:block;
+      color:var(--accent-2);
+      font-size:10px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .hero-card strong{
+      display:block;
+      font-family:"Manrope",sans-serif;
+      font-size:24px;
+      line-height:1.05;
+      letter-spacing:-.04em;
+      margin-bottom:10px;
+    }
+
+    .hero-card p{
+      color:#637a75;
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    /* TRUST BAR */
+    .trust{
+      padding:26px 0 0;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .trust-item{
+      background:rgba(255,255,255,.74);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px 20px;
+      box-shadow:var(--shadow);
+    }
+
+    .trust-item strong{
+      display:block;
+      font-family:"Manrope",sans-serif;
+      font-size:22px;
+      letter-spacing:-.04em;
+      margin-bottom:8px;
+    }
+
+    .trust-item p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    /* ABOUT */
+    .about{
+      background:transparent;
+    }
+
+    .about-layout{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .about-photo{
+      position:relative;
+      border-radius:32px;
+      overflow:hidden;
+      min-height:560px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .about-sheet{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:34px;
+      box-shadow:var(--shadow);
+      margin-top:28px;
+    }
+
+    .about-sheet ul{
+      list-style:none;
+      display:grid;
+      gap:16px;
+    }
+
+    .about-sheet li{
+      display:grid;
+      grid-template-columns:38px 1fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .about-sheet i{
+      width:38px;
+      height:38px;
+      border-radius:14px;
+      background:var(--bg-soft);
+      color:var(--accent-2);
+      display:grid;
+      place-items:center;
+      font-style:normal;
+      font-size:18px;
+      font-weight:800;
+    }
+
+    .about-sheet strong{
+      display:block;
+      font-size:16px;
+      margin-bottom:4px;
+      font-family:"Manrope",sans-serif;
+    }
+
+    .about-sheet p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* SERVICES */
+    .services{
+      background:linear-gradient(180deg, rgba(238,245,242,.65), rgba(255,255,255,0));
+    }
+
+    .services-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:40px;
+      margin-bottom:56px;
+    }
+
+    .services-head .lead{
+      margin-bottom:6px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .service-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:26px 24px;
+      box-shadow:var(--shadow);
+      transition:.3s ease;
+    }
+
+    .service-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .service-icon{
+      width:52px;
+      height:52px;
+      border-radius:18px;
+      background:var(--bg-soft);
+      color:var(--accent-2);
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      margin-bottom:18px;
+    }
+
+    .service-card h3{
+      font-family:"Manrope",sans-serif;
+      font-size:24px;
+      line-height:1;
+      letter-spacing:-.04em;
+      margin-bottom:10px;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      margin-bottom:18px;
+    }
+
+    .service-card small{
+      color:#7f948f;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    /* PROCESS */
+    .process{
+      background:transparent;
+    }
+
+    .process-wrap{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:70px;
+      align-items:start;
+    }
+
+    .process-side{
+      position:sticky;
+      top:110px;
+    }
+
+    .process-side .lead{
+      margin-top:22px;
+    }
+
+    .process-list{
+      display:grid;
+      gap:16px;
+    }
+
+    .step{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:58px 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .step-num{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:var(--accent-3);
+      color:var(--accent-2);
+      font-family:"Manrope",sans-serif;
+      font-size:22px;
+      font-weight:800;
+    }
+
+    .step h3{
+      font-family:"Manrope",sans-serif;
+      font-size:24px;
+      letter-spacing:-.04em;
+      margin-bottom:8px;
+    }
+
+    .step p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    /* ENVIRONMENT */
+    .environment{
+      background:linear-gradient(180deg, rgba(242,223,211,.24), rgba(255,255,255,0));
+    }
+
+    .env-card{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:0;
+      overflow:hidden;
+      border-radius:34px;
+      background:white;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .env-photo{
+      min-height:560px;
+    }
+
+    .env-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .env-copy{
+      padding:clamp(28px,5vw,62px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .env-copy .lead{
+      margin-top:20px;
+      margin-bottom:24px;
+    }
+
+    .env-list{
+      display:grid;
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .env-list div{
+      display:grid;
+      grid-template-columns:32px 1fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .env-list span{
+      width:32px;
+      height:32px;
+      border-radius:12px;
+      background:var(--bg-soft);
+      color:var(--accent-2);
+      display:grid;
+      place-items:center;
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .env-list strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:15px;
+    }
+
+    .env-list p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* FAQ */
+    .faq-head{
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:50px;
+      align-items:end;
+      margin-bottom:40px;
+    }
+
+    .faq-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .faq-item{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .faq-question{
+      width:100%;
+      padding:22px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      text-align:left;
+      color:var(--text);
+    }
+
+    .faq-question strong{
+      font-size:17px;
+      line-height:1.4;
+      font-family:"Manrope",sans-serif;
+    }
+
+    .faq-question span{
+      width:32px;
+      height:32px;
+      border-radius:12px;
+      background:var(--bg-soft);
+      display:grid;
+      place-items:center;
+      color:var(--accent-2);
+      font-size:20px;
+      flex-shrink:0;
+      transition:.25s ease;
+    }
+
+    .faq-item.active .faq-question span{
+      transform:rotate(45deg);
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+    }
+
+    .faq-answer p{
+      padding:0 24px 22px;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:14px;
+    }
+
+    /* BOOKING */
+    .booking{
+      padding-bottom:120px;
+    }
+
+    .booking-wrap{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:70px;
+      align-items:start;
+      background:linear-gradient(135deg, #edf5f2, #f9fcfb);
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:clamp(24px,4vw,42px);
+      box-shadow:var(--shadow);
+    }
+
+    .booking-copy p{
+      max-width:460px;
+      margin-top:22px;
+      color:var(--muted);
+      line-height:1.9;
+    }
+
+    .booking-info{
+      margin-top:34px;
+      display:grid;
+      gap:14px;
+    }
+
+    .booking-info div{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+      font-size:14px;
+    }
+
+    .booking-info span{
+      color:var(--muted);
+    }
+
+    .booking-form{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:30px;
+    }
+
+    .booking-form h3{
+      font-family:"Manrope",sans-serif;
+      font-size:32px;
+      line-height:1;
+      letter-spacing:-.04em;
+      margin-bottom:24px;
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .field{
+      margin-bottom:16px;
+    }
+
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      font-size:12px;
+      font-weight:800;
+      color:#506660;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      padding:14px 15px;
+      border:1px solid var(--line);
+      background:#fbfdfc;
+      border-radius:14px;
+      color:var(--text);
+      outline:none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
+      border-color:var(--accent-2);
+      background:white;
+    }
+
+    .field textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .booking-form .btn{
+      width:100%;
+      margin-top:8px;
+    }
+
+    .form-note{
+      margin-top:14px;
+      color:#7a8d88;
+      font-size:11px;
+      line-height:1.65;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:38px 0 26px;
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.45);
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      align-items:center;
+      color:#6c827d;
+      font-size:12px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      nav ul,
+      .nav-cta{
+        display:none;
+      }
+
+      .menu-btn{
+        display:grid;
+        place-items:center;
+      }
+
+      header.open nav ul{
+        display:flex;
+        position:fixed;
+        top:78px;
+        left:18px;
+        right:18px;
+        background:rgba(255,255,255,.98);
+        border:1px solid var(--line);
+        border-radius:24px;
+        box-shadow:var(--shadow);
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:16px;
+      }
+
+      header.open nav a{
+        display:block;
+        padding:13px 10px;
+      }
+
+      .hero-wrap,
+      .about-layout,
+      .process-wrap,
+      .booking-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .trust-grid,
+      .services-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .services-head,
+      .faq-head{
+        grid-template-columns:1fr;
+        display:grid;
+      }
+
+      .env-card{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:700px){
+      .container{
+        width:min(calc(100% - 30px), var(--container));
+      }
+
+      .section{
+        padding:82px 0;
+      }
+
+      .hero{
+        padding:108px 0 22px;
+      }
+
+      .hero-wrap{
+        gap:0;
+      }
+
+      .hero-copy{
+        min-height:auto;
+        padding:28px 22px 36px;
+      }
+
+      .hero-copy .title{
+        font-size:clamp(48px,13vw,70px);
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .hero-visual{
+        padding:18px;
+        min-height:auto;
+      }
+
+      .hero-main{
+        min-height:420px;
+      }
+
+      .hero-card{
+        left:18px;
+        right:18px;
+        bottom:18px;
+        max-width:none;
+      }
+
+      .trust-grid,
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+
+      .about-photo{
+        min-height:370px;
+      }
+
+      .process-side{
+        position:static;
+      }
+
+      .env-photo{
+        min-height:340px;
+      }
+
+      .faq-question strong{
+        font-size:15px;
+      }
+
+      .booking-wrap{
+        padding:18px;
+      }
+
+      .booking-form{
+        padding:22px 18px;
+      }
+
+      .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+
+      .footer-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{
+        scroll-behavior:auto;
+      }
+
+      *, *::before, *::after{
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+      }
+
+      .reveal{
+        opacity:1;
+        transform:none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="container nav">
+
+      <a href="#inicio" class="brand">
+        <span class="brand-icon">🐾</span>
+        <span>
+          <strong class="brand-name">Calma Canina</strong>
+          <small class="brand-sub">Peluquería canina · calma y cuidado</small>
+        </span>
+      </a>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#espacio">Nuestro espacio</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+          <li><a href="#reserva">Reserva</a></li>
+        </ul>
+      </nav>
+
+      <a href="#reserva" class="nav-cta">Reservar cita</a>
+
+      <button id="menuBtn" class="menu-btn" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container hero-wrap">
+
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Peluquería canina con enfoque tranquilo</div>
+
+          <h1 class="title">
+            Cuidado estético <span>con calma, higiene y confianza.</span>
+          </h1>
+
+          <p class="lead">
+            Una web pensada para una peluquería canina que transmite
+            serenidad y profesionalismo. Ideal para clientes que buscan
+            un espacio limpio, amable y respetuoso con cada perro.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#reserva" class="btn btn-primary">
+              Reservar hora
+              <span>↗</span>
+            </a>
+
+            <a href="#servicios" class="btn btn-secondary">
+              Ver servicios
+            </a>
+          </div>
+
+          <div class="hero-notes">
+            <span>Ambiente sereno</span>
+            <span>Atención higiénica</span>
+            <span>Trato respetuoso</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-main">
+            <img
+              src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1400&q=80"
+              alt="Perro siendo atendido en peluquería canina"
+            />
+          </div>
+
+          <div class="hero-card">
+            <small>Enfoque del estudio</small>
+            <strong>Menos estrés.<br />Más confianza.</strong>
+            <p>
+              La experiencia está pensada para que el perro se sienta acompañado,
+              cuidado y tratado con suavidad en cada etapa.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust">
+      <div class="container trust-grid">
+
+        <div class="trust-item reveal">
+          <strong>Baño y secado</strong>
+          <p>Rutinas cuidadosas con productos adecuados y una experiencia ordenada.</p>
+        </div>
+
+        <div class="trust-item reveal">
+          <strong>Cortes prolijos</strong>
+          <p>Trabajo estético limpio, según el tipo de pelaje y la comodidad del perro.</p>
+        </div>
+
+        <div class="trust-item reveal">
+          <strong>Espacio sereno</strong>
+          <p>Una identidad visual tipo clínica suave, sin verse fría ni distante.</p>
+        </div>
+
+        <div class="trust-item reveal">
+          <strong>Comunicación clara</strong>
+          <p>Un proceso simple para reservar y explicar al tutor lo que se hará.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about">
+      <div class="container about-layout">
+
+        <div class="about-photo reveal">
+          <img
+            src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1400&q=80"
+            alt="Perro tranquilo siendo cuidado"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="reveal">
+          <div class="eyebrow">Una estética que inspira confianza</div>
+          <h2 class="title">
+            Clínica en su orden. <span>Hogar en su trato.</span>
+          </h2>
+
+          <p class="lead" style="margin-top:20px;">
+            La idea de esta web es transmitir un servicio profesional sin caer
+            en una imagen demasiado fría. Por eso mezcla tonos suaves, mucho blanco,
+            verdes calmados y una estructura clara.
+          </p>
+
+          <div class="about-sheet">
+            <ul>
+              <li>
+                <i>✓</i>
+                <div>
+                  <strong>Imagen limpia y profesional</strong>
+                  <p>Ideal para mostrar higiene, cuidado y organización desde el primer vistazo.</p>
+                </div>
+              </li>
+
+              <li>
+                <i>♡</i>
+                <div>
+                  <strong>Lenguaje cercano y sereno</strong>
+                  <p>Perfecto para tutores que priorizan una experiencia amable y sin tensión.</p>
+                </div>
+              </li>
+
+              <li>
+                <i>✦</i>
+                <div>
+                  <strong>Diseño adaptable</strong>
+                  <p>Sirve tanto para una peluquería pequeña de barrio como para una marca premium.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicios">
+      <div class="container">
+
+        <div class="services-head">
+          <div class="reveal">
+            <div class="eyebrow">Servicios principales</div>
+            <h2 class="title">
+              Todo lo esencial <span>en un solo lugar.</span>
+            </h2>
+          </div>
+
+          <p class="lead reveal">
+            Una selección simple de servicios para que la página se vea clara,
+            ordenada y fácil de entender.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card reveal">
+            <div class="service-icon">🛁</div>
+            <h3>Baño</h3>
+            <p>Limpieza completa con atención al pelaje, la piel y el bienestar general.</p>
+            <small>Suavidad · higiene · confort</small>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">✂️</div>
+            <h3>Corte</h3>
+            <p>Arreglo estético prolijo, adaptado al tipo de pelo y al estilo solicitado.</p>
+            <small>Prolijidad · cuidado · armonía</small>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🐾</div>
+            <h3>Higiene básica</h3>
+            <p>Limpieza de oídos, contorno higiénico y retoques para un acabado más completo.</p>
+            <small>Detalle · orden · bienestar</small>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🌿</div>
+            <h3>Experiencia calmada</h3>
+            <p>Una atención que prioriza el ritmo del perro y una manipulación más amable.</p>
+            <small>Confianza · calma · respeto</small>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process" id="como-trabajamos">
+      <div class="container process-wrap">
+
+        <div class="process-side reveal">
+          <div class="eyebrow">Cómo trabajamos</div>
+          <h2 class="title">
+            Un proceso simple <span>y claro.</span>
+          </h2>
+          <p class="lead">
+            Esta estructura ayuda a que el cliente entienda que hay método,
+            higiene y una atención pensada para minimizar el estrés.
+          </p>
+        </div>
+
+        <div class="process-list">
+
+          <article class="step reveal">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Recepción tranquila</h3>
+              <p>Recibimos al perro con calma, revisamos el servicio solicitado y observamos cómo viene su pelaje.</p>
+            </div>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Baño y secado</h3>
+              <p>Se realiza el baño con productos apropiados y un secado cuidadoso para preparar bien el arreglo.</p>
+            </div>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Corte y detalles</h3>
+              <p>Se trabaja el pelaje y los detalles estéticos buscando un resultado limpio y cómodo para el perro.</p>
+            </div>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Entrega al tutor</h3>
+              <p>Se entrega al tutor con recomendaciones simples y una experiencia general clara y confiable.</p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ENVIRONMENT -->
+    <section class="section environment" id="espacio">
+      <div class="container env-card">
+
+        <div class="env-photo reveal">
+          <img
+            src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1400&q=80"
+            alt="Perro en un entorno de cuidado tranquilo"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="env-copy reveal">
+          <div class="eyebrow">Nuestro espacio</div>
+          <h2 class="title">
+            Sereno, limpio <span>y amable.</span>
+          </h2>
+
+          <p class="lead">
+            La estética de clínica tranquila funciona muy bien para este rubro,
+            porque transmite seguridad, orden y profesionalismo, pero con una emoción suave.
+          </p>
+
+          <div class="env-list">
+
+            <div>
+              <span>✓</span>
+              <div>
+                <strong>Colores suaves</strong>
+                <p>Verdes apagados, blanco limpio y tonos crema que comunican paz y confianza.</p>
+              </div>
+            </div>
+
+            <div>
+              <span>✓</span>
+              <div>
+                <strong>Diseño ordenado</strong>
+                <p>Bloques claros y espacios respirados para que todo se vea más profesional.</p>
+              </div>
+            </div>
+
+            <div>
+              <span>✓</span>
+              <div>
+                <strong>Mensaje adecuado</strong>
+                <p>El enfoque no es “diversión ruidosa”, sino bienestar, paciencia y cuidado.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="preguntas">
+      <div class="container">
+
+        <div class="faq-head">
+          <div class="reveal">
+            <div class="eyebrow">Preguntas frecuentes</div>
+            <h2 class="title">
+              Confianza también <span>es claridad.</span>
+            </h2>
+          </div>
+
+          <p class="lead reveal">
+            Una sección útil para resolver dudas comunes y reforzar la tranquilidad del servicio.
+          </p>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item active reveal">
+            <button class="faq-question" type="button" aria-expanded="true">
+              <strong>¿Atienden perros nerviosos?</strong>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Sí. La propuesta de esta web está pensada precisamente para transmitir una atención más calmada,
+                con tiempos respetuosos y una experiencia menos estresante.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <strong>¿Se puede reservar por WhatsApp?</strong>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Sí. El formulario de esta demo prepara un mensaje para WhatsApp,
+                para que el contacto sea rápido y simple.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <strong>¿Puedo mostrar distintos tipos de corte?</strong>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Claro. Después se puede ampliar esta web con una galería de antes y después,
+                estilos de corte o fichas por raza.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="reserva">
+      <div class="container booking-wrap">
+
+        <div class="booking-copy reveal">
+          <div class="eyebrow">Reserva de muestra</div>
+          <h2 class="title">
+            Hagamos que cada visita se sienta <span>segura y tranquila.</span>
+          </h2>
+
+          <p>
+            Este formulario está hecho para una maqueta de portafolio.
+            Abre WhatsApp con la solicitud escrita, para que la experiencia
+            se vea profesional y moderna.
+          </p>
+
+          <div class="booking-info">
+            <div>
+              <span>Servicio</span>
+              <strong>Baño, corte y cuidado estético</strong>
+            </div>
+            <div>
+              <span>Atención</span>
+              <strong>Con reserva previa</strong>
+            </div>
+            <div>
+              <span>Modalidad</span>
+              <strong>Peluquería canina de confianza</strong>
+            </div>
+            <div>
+              <span>Ubicación</span>
+              <strong>Demo visual / personalizable</strong>
+            </div>
+          </div>
+        </div>
+
+        <form id="bookingForm" class="booking-form reveal">
+          <h3>Solicitar una cita</h3>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="nombre">Nombre del tutor</label>
+              <input id="nombre" type="text" placeholder="Tu nombre" required />
+            </div>
+
+            <div class="field">
+              <label for="telefono">WhatsApp</label>
+              <input id="telefono" type="tel" placeholder="+56 9..." required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="perro">Nombre del perro</label>
+              <input id="perro" type="text" placeholder="Nombre de tu perro" />
+            </div>
+
+            <div class="field">
+              <label for="servicio">Servicio</label>
+              <select id="servicio">
+                <option>Baño</option>
+                <option>Baño + corte</option>
+                <option>Higiene básica</option>
+                <option>Quiero orientación</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="mensaje">Comentario</label>
+            <textarea id="mensaje" placeholder="Ej.: es sensible al secador, primer corte, tipo de pelaje, etc."></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">
+            Reservar por WhatsApp
+            <span>↗</span>
+          </button>
+
+          <p class="form-note">
+            Esto es una demostración. Reemplaza el número de WhatsApp por el real del negocio.
+          </p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 Calma Canina — Demo visual para portafolio</span>
+      <span>Peluquería canina · calma · higiene · confianza</span>
+    </div>
+  </footer>
+
+  <script>
+    /* HEADER */
+    const header = document.getElementById("header");
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    window.addEventListener("scroll", () => {
+      if(window.scrollY > 40){
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+    menuBtn.addEventListener("click", () => {
+      header.classList.toggle("open");
+      menuBtn.textContent = header.classList.contains("open") ? "✕" : "☰";
+    });
+
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        header.classList.remove("open");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    /* REVEAL */
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if("IntersectionObserver" in window && !reducedMotion.matches){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    }
+
+    /* FAQ */
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    function openFaq(item){
+      faqItems.forEach(other => {
+        other.classList.remove("active");
+        other.querySelector(".faq-question").setAttribute("aria-expanded","false");
+        other.querySelector(".faq-answer").style.maxHeight = null;
+      });
+
+      item.classList.add("active");
+      item.querySelector(".faq-question").setAttribute("aria-expanded","true");
+      item.querySelector(".faq-answer").style.maxHeight =
+        item.querySelector(".faq-answer").scrollHeight + "px";
+    }
+
+    faqItems.forEach(item => {
+      item.querySelector(".faq-question").addEventListener("click", () => {
+        const isActive = item.classList.contains("active");
+        if(isActive){
+          item.classList.remove("active");
+          item.querySelector(".faq-question").setAttribute("aria-expanded","false");
+          item.querySelector(".faq-answer").style.maxHeight = null;
+        } else {
+          openFaq(item);
+        }
+      });
+    });
+
+    if(faqItems.length){
+      openFaq(faqItems[0]);
+    }
+
+    /* WHATSAPP FORM */
+    const bookingForm = document.getElementById("bookingForm");
+    const whatsapp = "56912345678";
+
+    bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const perro = document.getElementById("perro").value.trim();
+      const servicio = document.getElementById("servicio").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
+
+      const texto =
+`Hola, quiero reservar una cita en Calma Canina.
+
+Nombre del tutor: ${nombre}
+WhatsApp: ${telefono}
+Nombre del perro: ${perro || "No indicado"}
+Servicio: ${servicio}
+Comentario: ${mensaje || "Sin comentarios"}`;
+
+      window.open(
+        `https://wa.me/${whatsapp}?text=${encodeURIComponent(texto)}`,
+        "_blank"
+      );
+    });
+  </script>
+</body>
+</html>
